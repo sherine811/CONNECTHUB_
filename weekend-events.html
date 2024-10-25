@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekend Plan</title>
+    <link rel="stylesheet" href="css/weekend-plan.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-logo">
+            <a href="#">CONNECTHUB</a>
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="/store.html">Store & Events</a></li>
+            <li><a href="/add-store.html">Add Store</a></li>
+            <li><a href="/weekend-events.html">Weekend Events</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+        </ul>
+        
+    </header>
+    <h1>Weekend Planner</h1>
+    <form action="/weekend-plan" method="POST">
+        <table>
+            <tr>
+                <th>Day</th>
+                <th>Plan</th>
+            </tr>
+            <tr>
+                <td>Saturday</td>
+                <td><input type="text" name="saturday" placeholder="Enter plan for Saturday"></td>
+            </tr>
+            <tr>
+                <td>Sunday</td>
+                <td><input type="text" name="sunday" placeholder="Enter plan for Sunday"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Save Weekend Plan">
+    </form>
+    <p><a href="index.html">Back to Home</a></p>
+    <footer class="footer">
+        <p>&copy; 2024 CONNECTHUB. All Rights Reserved.</p>
+    </footer>
+    <script src="js/weekend-planner.js"></script>
+
+</body>
+</html>

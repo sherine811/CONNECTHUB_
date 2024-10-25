@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-logo">
+            <a href="#">CONNECTHUB</a>
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="/store.html">Store & Events</a></li>
+            <li><a href="/add-store.html">Add Store</a></li>
+            <li><a href="/weekend-events.html">Weekend Events</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+        </ul>
+        
+    </header>
+    <form action="/register" method="POST">
+        <h1>Create an Account</h1>
+
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <input type="submit" value="Register">
+
+        <div id="error-message" class="error-message"></div>
+        <div id="success-message" class="success-message"></div>
+    </form>
+    <footer class="footer">
+        <p>&copy; 2024 CONNECTHUB. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        const success = urlParams.get('success');
+        const errorMessage = document.getElementById('error-message');
+        const successMessage = document.getElementById('success-message');
+
+        if (error === 'user_exists') {
+            errorMessage.textContent = 'Username already exists. Please choose a different one.';
+        }
+        if (success === 'registered') {
+            successMessage.textContent = 'Registration successful! You can now log in.';
+        }
+    </script>
+</body>
+</html>

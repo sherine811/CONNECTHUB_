@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Store & Weekend Plan</title>
+    <style>
+        /* Importing fonts */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+        
+        /* Base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6;
+        }
+        
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1f2937; /* Dark background */
+            padding: 1rem 2rem;
+        }
+        
+        .navbar-logo a {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #00b4d8;
+            text-decoration: none;
+        }
+        
+        .navbar-menu {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+        }
+        
+        .navbar-menu li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .navbar-menu li a:hover {
+            background-color: #2563eb;
+            border-radius: 0.375rem;
+        }
+
+        /* Header title */
+        h1 {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        /* Stores and Weekend Plans containers */
+        #stores, #weekendPlans {
+            margin: 1rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #1f2937;
+            color: white;
+            margin-top: 2rem;
+        }
+        
+        .footer p {
+            margin: 0;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-logo">
+            <a href="#">CONNECTHUB</a>
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="/store.html">Store & Events</a></li>
+            <li><a href="/add-store.html">Add Store</a></li>
+            <li><a href="/weekend-events.html">Weekend Events</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+        </ul>
+        
+    </header>
+    
+    <h1>Add Store and Weekend Plan</h1>
+
+    <div id="stores"></div>
+    <div id="weekendPlans"></div>
+
+    <footer class="footer">
+        <p>&copy; 2024 CONNECTHUB. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Fetch saved data for stores and weekend plans
+        async function fetchSavedData() {
+            try {
+                const response = await fetch('/api/savedData');
+                const data = await response.json();
+                if (data.success) {
+                    displayStores(data.stores);
+                    displayWeekendPlans(data.weekendPlans);
+                } else {
+                    console.error('Failed to fetch data:', data.message);
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        // Display saved stores
+        function displayStores(stores) {
+            const storesDiv = document.getElementById('stores');
+            stores.forEach(store => {
+                const storeElement = document.createElement('div');
+                storeElement.innerHTML = `
+                    <h2>${store.name}</h2>
+                    <p>Location: ${store.location}</p>
+                    <p>Description: ${store.description}</p>
+                `;
+                storesDiv.appendChild(storeElement);
+            });
+        }
+
+        // Display saved weekend plans
+        function displayWeekendPlans(plans) {
+            const weekendPlansDiv = document.getElementById('weekendPlans');
+            plans.forEach(plan => {
+                const planElement = document.createElement('div');
+                planElement.innerHTML = `
+                    <h3>Weekend Plan</h3>
+                    <p>Saturday: ${plan.saturday}</p>
+                    <p>Sunday: ${plan.sunday}</p>
+                `;
+                weekendPlansDiv.appendChild(planElement);
+            });
+        }
+
+        // Fetch data on page load
+        fetchSavedData();
+    </script>
+</body>
+</html>

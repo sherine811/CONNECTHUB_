@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Store</title>
+    <link rel="stylesheet" href="/css/add-store.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-logo">
+            <a href="#">CONNECTHUB</a>
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="/store.html">Store & Events</a></li>
+            <li><a href="/add-store.html">Add Store</a></li>
+            <li><a href="/weekend-events.html">Weekend Events</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+        </ul>
+        
+    </header>
+    <h1>Add a New Store</h1>
+    
+    <form id="storeForm" action="/add-store" method="POST">
+
+        <label for="storeName">Store Name:</label>
+        <input type="text" id="storeName" name="storeName" required>
+        
+        <label for="storeDescription">Description:</label>
+        <textarea id="storeDescription" name="storeDescription" rows="4" required></textarea>
+        
+        <label for="storeLocation">Location:</label>
+        <input type="text" id="storeLocation" name="storeLocation" required placeholder="E.g., 123 Main St, City">
+        
+        <label for="storeImage">Store Image URL:</label>
+        <input type="text" id="storeImage" name="storeImage" placeholder="e.g. https://example.com/store.jpg" required>
+        
+        <button type="submit">Add Store</button>
+    </form>
+    <footer class="footer">
+        <p>&copy; 2024 CONNECTHUB. All Rights Reserved.</p>
+    </footer>
+
+    <script src="js/add-store.js"></script>
+    
+</body>
+</html>

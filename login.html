@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-logo">
+            <a href="#">CONNECTHUB</a>
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="/store.html">Store & Events</a></li>
+            <li><a href="/add-store.html">Add Store</a></li>
+            <li><a href="/weekend-events.html">Weekend Events</a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+        </ul>
+        
+    </header>
+    <form action="/login" method="POST">
+        <h1>Login</h1>
+
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <input type="submit" value="Login">
+        
+        <!-- Error message -->
+        <div id="error-message" class="error-message"></div>
+    </form>
+    <footer class="footer">
+        <p>&copy; 2024 CONNECTHUB. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Check for error messages in the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        const errorMessage = document.getElementById('error-message');
+
+        if (error === 'invalid_user') {
+            errorMessage.textContent = 'Invalid username. Please try again.';
+        } else if (error === 'invalid_password') {
+            errorMessage.textContent = 'Invalid password. Please try again.';
+        }
+    </script>
+</body>
+</html>
